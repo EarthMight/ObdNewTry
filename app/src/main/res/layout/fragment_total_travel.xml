@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="7dp"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".TotalTravelFrag">
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     android:layout_marginTop="30dp">
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:orientation="horizontal"
+         android:layout_height="wrap_content"
+         android:gravity="center"
+         android:background="@color/colorPrimary">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:text="Traveled Km : "
+             android:textSize="20dp"
+             android:layout_gravity="center"
+             android:gravity="center"
+             android:textColor="#ffff"
+             android:id="@+id/TTfrgtxt"/>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:text=": none"
+             android:textSize="20dp"
+             android:layout_gravity="center"
+             android:gravity="center"
+             android:textColor="#ffff"
+             android:id="@+id/TTfrgvalue"/>
+
+     </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:gravity="center">
+
+         <com.github.capur16.digitspeedviewlib.DigitSpeedView
+             android:layout_width="wrap_content"
+             android:id="@+id/digitalTTfrgid"
+             android:layout_height="100dp"
+             android:layout_gravity="center"
+             app:backgroundColor="#ffff"
+             app:backgroundDrawable="@drawable/ffff"
+             app:disableBackgroundImage="false"
+             app:showUnit="true"
+             app:speed="0"
+             app:speedTextColor="#2d2d2d"
+             app:speedTextSize="30dp"
+             app:unit="Km"
+             app:unitTextColor="#2d2d2d"
+             app:unitTextSize="5dp" />
+
+     </LinearLayout>
+
+ </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Additional Data"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"/>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/boder"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:text="Engine Runtime :"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:text="none"
+            android:id="@+id/engineRunTime"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:id="@+id/engineRuntimequestionmark"
+            android:src="@drawable/questionmark"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/boder"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:text="Engine Load :"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:text="none"
+            android:id="@+id/engineload"
+            />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:id="@+id/engineloadquestionmark"
+            android:src="@drawable/questionmark"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/boder"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:text="Engine Coolent Temp :"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:text="none"
+            android:id="@+id/enginetemp"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:id="@+id/engcooltempquestionmark"
+            android:src="@drawable/questionmark"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

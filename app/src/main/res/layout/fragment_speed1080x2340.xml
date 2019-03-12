@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".SpeedFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/digitalspeedlinaear"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Speed : "
+                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#ffff"
+                android:id="@+id/speedfrgtxt"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text=": nono"
+                android:textSize="30dp"
+                android:textColor="#ffff"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/speedfrgvalue"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_margin="7dp"
+            android:background="@drawable/boder"
+            android:layout_marginTop="20dp">
+
+            <com.github.capur16.digitspeedviewlib.DigitSpeedView
+                android:layout_width="wrap_content"
+                android:id="@+id/digitalSpeedfrgid"
+                android:layout_height="match_parent"
+                app:backgroundColor="#ffff"
+                app:disableBackgroundImage="false"
+                app:showUnit="true"
+                app:backgroundDrawable="@drawable/ffff"
+                app:speed="0"
+                app:speedTextColor="#2d2d2d"
+                app:speedTextSize="40dp"
+                app:unit="Km"
+                app:unitTextColor="#2d2d2d"
+                app:unitTextSize="5dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/speedlinear"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/boder"
+        android:layout_margin="7dp"
+        android:layout_marginBottom="50dp">
+
+        <com.github.anastr.speedviewlib.SpeedView
+            android:id="@+id/speedViewfrag"
+            android:layout_width="360dp"
+            app:sv_unitUnderSpeedText="true"
+            android:layout_gravity="center"
+            app:sv_trembleDegree="0"
+            app:sv_lowSpeedPercent="29"
+            app:sv_mediumSpeedPercent="45"
+            android:layout_height="440dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

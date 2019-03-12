@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#2E7D32</color>
+    <color name="primary_dark">#1B5E20</color>
+    <color name="accent">#ff5252</color>
+    <color name="tabcolor">#ffff</color>
+    <color name="tabindication">#2d2d2d</color>
+
+    <color name="emphasis">#31b6e7</color>
+    <color name="white">#fff</color>
+    <color name="blue">#026ebb</color>
+    <color name="red">#ee4353</color>
+    <color name="mgreen">#003300</color>
+    <color name="myello">#dada0b</color>
+    <color name="mred">#ae0404</color>
+    <color name="mbrrown">#4d2600</color>
+    <color name="transprant">#80000000</color>
+</resources>

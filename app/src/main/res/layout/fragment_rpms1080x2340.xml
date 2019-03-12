@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RpmsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/digitaltestlinaear"
+            android:layout_margin="7dp"
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Rpm : "
+                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:id="@+id/testfrgtxt"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text=": none"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textColor="#ffff"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/testfrgvalue"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_margin="7dp"
+            android:layout_height="120dp"
+            android:background="@drawable/boder"
+            android:layout_marginTop="20dp">
+
+            <com.github.capur16.digitspeedviewlib.DigitSpeedView
+                android:layout_width="wrap_content"
+                android:id="@+id/digitaltestfrgid"
+                android:layout_height="match_parent"
+                app:backgroundColor="#ffff"
+                app:backgroundDrawable="@drawable/ffff"
+                app:disableBackgroundImage="false"
+                app:showUnit="true"
+                app:speed="0"
+                app:speedTextColor="#2d2d2d"
+                app:speedTextSize="40dp"
+                app:unit="Rpm"
+                app:unitTextColor="#2d2d2d"
+                app:unitTextSize="5dp" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/testlinear"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/boder"
+        android:layout_margin="7dp"
+        android:layout_marginTop="30dp">
+
+        <com.github.anastr.speedviewlib.DeluxeSpeedView
+            android:id="@+id/testViewfrag"
+            android:layout_width="360dp"
+            android:layout_height="440dp"
+            app:sv_unitUnderSpeedText="true"
+            app:sv_trembleDegree="0"
+            android:layout_gravity="center"
+            app:sv_lowSpeedPercent="25"
+            app:sv_mediumSpeedPercent="50"
+            app:sv_backgroundCircleColor="#2d2d2d"
+            app:sv_unit=" RPM" />
+
+    </LinearLayout>
+</LinearLayout>

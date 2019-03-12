@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/road"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".splash">
+
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/carw"
+        android:id="@+id/carid"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cartxtid"
+        android:layout_marginTop="5dp"
+        android:text="Car Connector"
+        android:textColor="#ffff"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        />
+
+</LinearLayout>
