@@ -1598,7 +1598,6 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         }
     }
 
-
 //##################################--method for clearify RequestCode--#######################################
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -1896,15 +1895,11 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             boolean indata = myhelper.insertData(new KmDataModel(Skm,Dkm,formattedDate,formattedTime));
 
             if (indata == true) {
-
-                Toast.makeText(getApplicationContext(),"Km Saved",Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Differnce  Km Saved", Toast.LENGTH_SHORT).show();
-
+                Log.d("AddData","Km Saved");
+                Log.d("AddData","Differnce  Km Saved");
             }
             else{
-
-                Toast.makeText(getApplicationContext(),"In Data not True",Toast.LENGTH_SHORT).show();
-
+                Log.d("AddData","In Data not True");
             }
 
             LastRecord();
@@ -2072,10 +2067,9 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 SecondLastRecord();
 
                     if (String.valueOf(dataArrayModelList.get(0)).contains(formattedDate) && String.valueOf(dataArrayModelList.get(1)).contains(formattedTime)) {
-
-                        Toast.makeText(getApplicationContext(), "Data Of this Date and time is already saved", Toast.LENGTH_SHORT).show();
+                        Log.d("DataStuff","Data Of this Date and time is already saved");
                     } else {
-
+                        Log.d("DataStuff","new  Date or Time");
                         Toast.makeText(getApplicationContext(), "new  Date or Time", Toast.LENGTH_SHORT).show();
                         AddData();
                     }
@@ -2115,16 +2109,16 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 SecondLastRecord();
 
                 if (String.valueOf(dataArrayModelList.get(0)).contains(formattedDate) && String.valueOf(dataArrayModelList.get(1)).contains(formattedTime)) {
-
-                    Toast.makeText(getApplicationContext(), "Data Of this Date and time is already saved", Toast.LENGTH_SHORT).show();
+                        Log.d("DataStuff","Data Of this Date and time is already saved");
+//                    Toast.makeText(getApplicationContext(), "Data Of this Date and time is already saved", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    Log.d("DataStuff","new  Date or Time");
                     Toast.makeText(getApplicationContext(), "new  Date or Time", Toast.LENGTH_SHORT).show();
                     AddData();
                 }
 
             }else{
-
+                Log.d("DataStuff","First Data entry");
                 Toast.makeText(getApplicationContext(), "First Data entry", Toast.LENGTH_SHORT).show();
                 AddData();
 

@@ -17,14 +17,14 @@ import android.widget.Toast;
 
 import com.jackandphantom.blurimage.BlurImage;
 import com.quad14.obdnewtry.activity.MainActivity;
-import com.quad14.obdnewtry.sql.SQLdbClass;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class splash extends Activity {
     String date,dateURL;
-    SQLdbClass sqLdbClass;
+
     ImageView carIcon;
     TextView CarTxt;
 

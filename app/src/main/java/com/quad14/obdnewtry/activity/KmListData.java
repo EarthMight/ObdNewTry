@@ -179,7 +179,13 @@ public class KmListData extends Fragment {
                     }
 
                 }
+                if (customListDataAdaper.getCount() > 0) {
 
+                    DataClear.setVisibility(View.VISIBLE);
+                } else {
+                    DataClear.setVisibility(view.INVISIBLE);
+
+                }
 
                 pullToRefresh.setRefreshing(false);
             }
