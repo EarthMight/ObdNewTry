@@ -112,10 +112,6 @@ public class KmListData extends Fragment {
 
         }
 
-
-
-
-
     }
 
     @Override
@@ -131,7 +127,7 @@ public class KmListData extends Fragment {
         donutProgress = (DonutProgress)view.findViewById(R.id.donut_progress);
         final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.pullToRefresh);
         ProgressLinerid.setVisibility(View.INVISIBLE);
-        Collections.reverse(customDataListModelList); // ADD THIS LINE TO REVERSE ORDER!
+//        Collections.reverse(customDataListModelList); // ADD THIS LINE TO REVERSE ORDER!
         customListDataAdaper = new CustomListDataAdaper(getActivity(), R.layout.customkmlist, customDataListModelList);
         DataListView3.invalidate();
         DataListView3.setAdapter(customListDataAdaper);
@@ -174,7 +170,7 @@ public class KmListData extends Fragment {
 
                     try{
                         customDataListModelList.add(new CustomDataListModel(cursor.getString(2),cursor.getString(3),cursor.getInt(1),cursor.getInt(4)));
-                        Collections.reverse(customDataListModelList);
+//                        Collections.reverse(customDataListModelList);
                         customListDataAdaper.notifyDataSetChanged();
 
                     }catch (Exception e){
