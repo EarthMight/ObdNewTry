@@ -29,6 +29,11 @@ public class CustomListDataAdaper extends ArrayAdapter<CustomDataListModel> {
         this.resource = resource;
     }
 
+    public CustomListDataAdaper(@NonNull Context context, int resource, Context context1) {
+        super(context, resource);
+        this.context = context1;
+    }
+
     @Nullable
     @Override
     public CustomDataListModel getItem(int position) {
@@ -37,7 +42,7 @@ public class CustomListDataAdaper extends ArrayAdapter<CustomDataListModel> {
 
     @Override
     public long getItemId(int position) {
-        return super.getItemId(position);
+        return super.getItemId(super.getCount() - position - 1);
     }
 
     @NonNull

@@ -579,27 +579,30 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         }
     };
 
-//        TestingThread=new Thread(){
-//        @Override
-//        public void run() {
-//            try {
-//                while (!TestingThread.isInterrupted()) {
-//                    Thread.sleep(1000);
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            c++;
-//                            totalKmModel=new TotalKmModel(c);
-//
-//
-//                        }
-//                    });
-//                }
-//            } catch (InterruptedException e) {
-//            }
-//        }
-//    };
-//    TestingThread.start();
+        TestingThread=new Thread(){
+        @Override
+        public void run() {
+            try {
+                while (!TestingThread.isInterrupted()) {
+                    Thread.sleep(30000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    DatabaseStuff();
+                                }
+                            }, 5000);
+                        }
+                    });
+                }
+            } catch (InterruptedException e) {
+            }
+        }
+    };
+    TestingThread.start();
 
 
         UpdateDiffer=new Thread(){

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ import com.shashank.sony.fancydialoglib.Icon;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -54,6 +56,7 @@ public class KmListData extends Fragment {
 
     SQliteHelperClass myhelper;
 
+    Thread UpdateList;
 
     ImageView Backlistarrow;
     ImageView DataClear,Checktable;
@@ -79,7 +82,7 @@ public class KmListData extends Fragment {
 
         tripLogOpenHelper=new TripLogOpenHelper(getActivity());
         myhelper=new SQliteHelperClass(getActivity());
-
+        UpdateList=new Thread();
 
         customDataListModelList=new ArrayList<>();
 
@@ -104,10 +107,14 @@ public class KmListData extends Fragment {
 
         }catch (Exception e){
 
-            Log.e("LogOfSaver","King of Log which is born for save the day of programmer");
+            Log.e("LogOfSaviour","King of Log which is born for save the day of programmer");
         }
 
         }
+
+
+
+
 
     }
 
@@ -122,13 +129,13 @@ public class KmListData extends Fragment {
         DataClear=(ImageView)view.findViewById(R.id.deleteData);
         ProgressLinerid=(LinearLayout)view.findViewById(R.id.progressLinerid);
         donutProgress = (DonutProgress)view.findViewById(R.id.donut_progress);
+        final SwipeRefreshLayout pullToRefresh = view.findViewById(R.id.pullToRefresh);
         ProgressLinerid.setVisibility(View.INVISIBLE);
+        Collections.reverse(customDataListModelList); // ADD THIS LINE TO REVERSE ORDER!
         customListDataAdaper = new CustomListDataAdaper(getActivity(), R.layout.customkmlist, customDataListModelList);
         DataListView3.invalidate();
         DataListView3.setAdapter(customListDataAdaper);
         ma=new MainActivity();
-
-
         if (customListDataAdaper.getCount() > 0) {
 
             DataClear.setVisibility(View.VISIBLE);
@@ -151,6 +158,36 @@ public class KmListData extends Fragment {
             }
         });
 
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                customListDataAdaper.clear();
+
+                Cursor cursor=myhelper.getAllData();
+
+                if(cursor.getCount() ==0){
+
+                    return;
+                }
+
+                while (cursor.moveToNext()) {
+
+                    try{
+                        customDataListModelList.add(new CustomDataListModel(cursor.getString(2),cursor.getString(3),cursor.getInt(1),cursor.getInt(4)));
+                        Collections.reverse(customDataListModelList);
+                        customListDataAdaper.notifyDataSetChanged();
+
+                    }catch (Exception e){
+
+                        Log.e("LogOfSaviour","King of Log which is born for save the day of programmer");
+                    }
+
+                }
+
+
+                pullToRefresh.setRefreshing(false);
+            }
+        });
 
         return view;
     }
