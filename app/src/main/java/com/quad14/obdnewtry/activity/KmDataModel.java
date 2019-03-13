@@ -7,14 +7,10 @@ public class KmDataModel {
     Integer DffKm;
     String Date;
     String Time;
+    String Rpm;
+    String Speed;
+    String Runtime;
 
-    public KmDataModel(String id, Integer km, Integer dffKm, String date, String time) {
-        Id = id;
-        Km = km;
-        DffKm = dffKm;
-        Date = date;
-        Time = time;
-    }
 
     public KmDataModel(Integer km, Integer dffKm, String date, String time) {
         Km = km;
@@ -23,12 +19,27 @@ public class KmDataModel {
         Time = time;
     }
 
-    public KmDataModel(Integer km, String date, String time) {
+    public KmDataModel(String id, Integer km, Integer dffKm, String date, String time, String rpm, String speed, String runtime) {
+        Id = id;
         Km = km;
+        DffKm = dffKm;
         Date = date;
         Time = time;
+        Rpm = rpm;
+        Speed = speed;
+        Runtime = runtime;
     }
 
+
+    public KmDataModel(Integer km, Integer dffKm, String date, String time, String rpm, String speed, String runtime) {
+        Km = km;
+        DffKm = dffKm;
+        Date = date;
+        Time = time;
+        Rpm = rpm;
+        Speed = speed;
+        Runtime = runtime;
+    }
 
     public String getId() {
         return Id;
@@ -68,6 +79,30 @@ public class KmDataModel {
 
     public void setTime(String time) {
         Time = time;
+    }
+
+    public String getRpm() {
+        return Rpm;
+    }
+
+    public void setRpm(String rpm) {
+        Rpm = rpm;
+    }
+
+    public String getSpeed() {
+        return Speed;
+    }
+
+    public void setSpeed(String speed) {
+        Speed = speed;
+    }
+
+    public String getRuntime() {
+        return Runtime;
+    }
+
+    public void setRuntime(String runtime) {
+        Runtime = runtime;
     }
 }
 

@@ -21,6 +21,10 @@ public class SQliteHelperClass  extends SQLiteOpenHelper {
     public static final String col_2= "MDATE";
     public static final String col_3= "MTIME";
     public static final String col_4= "MDIFFER";
+    public static final String col_5= "MRPM";
+    public static final String col_6= "MSPEED";
+    public static final String col_7= "MRUNTIME";
+
 
 //
 //    public SQliteHelperClass(Context context) {
@@ -42,7 +46,7 @@ public class SQliteHelperClass  extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE "+ Table_name +"(Id INTEGER PRIMARY KEY AUTOINCREMENT, KM INTEGER, MDATE TEXT, MTIME TEXT , MDIFFER INTEGER) ");
+        db.execSQL("CREATE TABLE "+ Table_name +"(Id INTEGER PRIMARY KEY AUTOINCREMENT, KM INTEGER, MDATE TEXT, MTIME TEXT , MDIFFER INTEGER, MRPM TEXT , MSPEED TEXT , MRUNTIME TEXT) ");
 
     }
 
@@ -60,6 +64,9 @@ public class SQliteHelperClass  extends SQLiteOpenHelper {
         contentValues.put(col_2,kmDataModel.getDate());
         contentValues.put(col_3,kmDataModel.getTime());
         contentValues.put(col_4,kmDataModel.getDffKm());
+        contentValues.put(col_5,kmDataModel.getRpm());
+        contentValues.put(col_6,kmDataModel.getSpeed());
+        contentValues.put(col_7,kmDataModel.getRuntime());
         long result =db.insert(Table_name,null,contentValues);
         if(result == -1){
             return false;

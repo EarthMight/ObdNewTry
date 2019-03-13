@@ -68,6 +68,9 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 import com.google.inject.Inject;
 import com.irozon.sneaker.Sneaker;
 import com.quad14.obdnewtry.R;
+import com.quad14.obdnewtry.RpmModel;
+import com.quad14.obdnewtry.RuntimeModel;
+import com.quad14.obdnewtry.SPEEDModel;
 import com.quad14.obdnewtry.SQliteHelperClass;
 import com.quad14.obdnewtry.SpeedAndRpm;
 import com.quad14.obdnewtry.SpeedFragment;
@@ -165,7 +168,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     private TextView obdStatusTextView;
     private TextView gpsStatusTextView;
     private LinearLayout vv;
-    private TableLayout tl;
+
     private boolean isServiceBound;
     private AbstractGatewayService service;
 
@@ -215,10 +218,13 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
     private SoundManager mSoundManager;
 
-    private ImageView SpeedQuestiomark,RpmQuestioMark,TravelQuestionmark,EngineRuntimeQuestionmark,kmdifferQuestionmark;
+    private ImageView SpeedQuestiomark,RpmQuestioMark,TravelQuestionmark,EngineRuntimeQuestionmark;
 
     SQliteHelperClass myhelper;
     TotalKmModel totalKmModel;
+    RpmModel rpmModel;
+    SPEEDModel speedModelData;
+    RuntimeModel runtimeModel;
 
     List<String> dataArrayModelList;
     List<Integer> dataIntArrayList;
@@ -308,7 +314,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         RpmQuestioMark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QuestionMark("Vehical Rpm","In cars, rpm measures how many times the engine's crankshaft makes one full rotation every minute, and along with it, how many times each piston goes up and down in its cylinder.");
+                QuestionMark("Vehical RpmModel","In cars, rpm measures how many times the engine's crankshaft makes one full rotation every minute, and along with it, how many times each piston goes up and down in its cylinder.");
             }
         });
 
@@ -327,13 +333,6 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             }
         });
 
-        kmdifferQuestionmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                QuestionMark("Latest Distance","This is showing Difference between Your car total Km while You are Driving and car total Km before you start Driving");
-
-            }
-        });
 
         if (isMyServiceRunning(MockObdGatewayService.class) == false ) {
 
@@ -369,17 +368,17 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             }
         });
 
-//        TodayDate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(isMyServiceRunning(MockObdGatewayService.class) == true){
-//                    viewData();
-//                }else if(isMyServiceRunning(ObdGatewayService.class) == true){
-//                    viewData();
-//                }
-//
-//            }
-//        });
+        compass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isMyServiceRunning(MockObdGatewayService.class) == true){
+                    viewData();
+                }else if(isMyServiceRunning(ObdGatewayService.class) == true){
+                    viewData();
+                }
+
+            }
+        });
 
 //        LastRecord.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -407,7 +406,6 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         TotalKm=(TextView)findViewById(R.id.totalKm);
         obdStatusTextView=(TextView)findViewById(R.id.OBD_STATUS);
         gpsStatusTextView=(TextView)findViewById(R.id.GPS_POS);
-        tl=(TableLayout)findViewById(R.id.data_table);
         vv=(LinearLayout)findViewById(R.id.vehicle_view);
         LinearLayout Speedlinear=(LinearLayout)findViewById(R.id.speedLinearId);
         SpeedButton=(Button)findViewById(R.id.speedbtid);
@@ -422,13 +420,13 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         RpmQuestioMark=(ImageView)findViewById(R.id.rpmquestionmark);
         TravelQuestionmark=(ImageView)findViewById(R.id.travelKmquestionmark);
         EngineRuntime=(TextView)findViewById(R.id.engineRunTimemain);
-        KmDifference=(TextView)findViewById(R.id.killdiffermain);
-        SaveKmChk=(TextView)findViewById(R.id.saveKmchk);
+
+
         myhelper=new SQliteHelperClass(MainActivity.this);
-        TotalkmLinear=(LinearLayout)findViewById(R.id.tklid);
+
 //        TodayDate=(TextView)findViewById(R.id.tdate);
 //        LastRecord=(Button)findViewById(R.id.lastrecord);
-        kmdifferQuestionmark=(ImageView)findViewById(R.id.kmdifferquestionmark);
+
         EngineRuntimeQuestionmark=(ImageView)findViewById(R.id.engineRuntimequestionmark);
 //        SecondlastRecord=(Button)findViewById(R.id.Secondlastrecord);
 
@@ -579,73 +577,46 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         }
     };
 
-        TestingThread=new Thread(){
-        @Override
-        public void run() {
-            try {
-                while (!TestingThread.isInterrupted()) {
-                    Thread.sleep(30000);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            final Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    DatabaseStuff();
-                                }
-                            }, 5000);
-                        }
-                    });
-                }
-            } catch (InterruptedException e) {
-            }
-        }
-    };
-    TestingThread.start();
 
+//
+//        TestingThread=new Thread(){
+//        @Override
+//        public void run() {
+//            try {
+//                while (!TestingThread.isInterrupted()) {
+//                    Thread.sleep(30000);
+//                    runOnUiThread(new Runnable() {
+//
+//                        @Override
+//                        public void run() {
+//                            final Handler handler = new Handler();
+//                            handler.postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    DatabaseStuff();
+//                                }
+//                            }, 5000);
+//                        }
+//
+//
+//
+//
+//                    });
+//                }
+//            } catch (InterruptedException e) {
+//            }
+//        }
+//    };
+//
+//        if(isMyServiceRunning(MockObdGatewayService.class) == true){
+//
+//            TestingThread.start();
+//        }else if(isMyServiceRunning(ObdGatewayService.class) == true){
+//
+//            TestingThread.start();
+//        }
 
-        UpdateDiffer=new Thread(){
-
-            @Override
-            public void run() {
-                try {
-                    while (!UpdateDiffer.isInterrupted()) {
-                        Thread.sleep(5000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-
-                                if (isMyServiceRunning(MockObdGatewayService.class) == true )
-                                    try {
-                                        final Handler handler = new Handler();
-                                        handler.postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-
-                                                try {
-                                                    DifferUpdate = String.valueOf(totalKmModel.getTotalkm() - dataIntArrayList.get(0));
-                                                    KmDifference.setText(DifferUpdate);
-                                                }catch (Exception e){
-                                                    KmDifference.setText("Calculating");
-                                                }
-
-                                            }
-                                        }, 1000);
-
-                                    }catch (Exception e){
-
-                                    }
-                            }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
-        };
-        UpdateDiffer.start();
 }
-
 
 //###############################--On click method for Button click condition--################################################
     public void onClick(View v) {
@@ -1147,6 +1118,8 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
                 speedModel=new SpeedModel(command.getMetricSpeed());
 
+                speedModelData=new SPEEDModel(mySpeed);
+
 //              Toast.makeText(getApplicationContext(),speedModel.getId()+speedModel.getValue(),Toast.LENGTH_SHORT).show();
 
             } else if (cmdID.equals(AvailableCommandNames.ENGINE_RPM.toString())) {
@@ -1160,6 +1133,8 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
                 Rbundle.putString("rpm", myRpm );
                 RsBundle.putString("rpm2",myRpm);
+
+                rpmModel=new RpmModel(myRpm);
 
 //               Toast.makeText(getApplicationContext(), AvailableCommandNames.ENGINE_RPM.toString() + " : " + String.valueOf(commandrpm.getRPM()), Toast.LENGTH_SHORT).show();
             }
@@ -1185,6 +1160,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 String myEngineRuntim=String.valueOf(runtimeCommand.getFormattedResult());
                 EngineRuntime.setText(myEngineRuntim);
                 TravelBundle.putString("enRun",myEngineRuntim);
+                runtimeModel=new RuntimeModel(myEngineRuntim);
             }
 
             else if (cmdID.equals(AvailableCommandNames.ENGINE_COOLANT_TEMP.toString()))
@@ -1358,7 +1334,6 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
         Log.d(TAG, "Starting live data..");
 
-        tl.removeAllViews(); //start fresh
         doBindService();
 
         currentTrip = triplog.startTrip();
@@ -1514,7 +1489,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         value.setTag(id);
         tr.addView(name);
         tr.addView(value);
-        tl.addView(tr, params);
+
     }
 
 //##################--queueCommands method for geting command object from ObdConfig class--#########################
@@ -1873,10 +1848,20 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     //**********************--Save Total Km--****************
     public void AddData(){
         Integer Skm;
-
+        String SRpm;
+        String SRuntime;
+        String SSpeed;
         try{
 
             Skm = totalKmModel.getTotalkm();
+            SRpm= rpmModel.getRpm();
+            SRuntime=runtimeModel.getRunTimeModle();
+            SSpeed=speedModelData.getSpeed();
+
+            Log.d("SRpm",SRpm);
+            Log.d("SRuntime",SRuntime);
+            Log.d("SSpeed",SSpeed);
+
 
             Integer Dkm = Skm-dataIntArrayList.get(0);
             //****************--Getting Current Date--**********************
@@ -1892,11 +1877,10 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             String formattedTime = dateFormat.format(new Date()).toString();
 
 
-            boolean indata = myhelper.insertData(new KmDataModel(Skm,Dkm,formattedDate,formattedTime));
+            boolean indata = myhelper.insertData(new KmDataModel(Skm,Dkm,formattedDate,formattedTime,SRpm,SSpeed,SRuntime));
 
             if (indata == true) {
                 Log.d("AddData","Km Saved");
-                Log.d("AddData","Differnce  Km Saved");
             }
             else{
                 Log.d("AddData","In Data not True");
@@ -1908,6 +1892,9 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         }catch (Exception e){
             Log.e("AddData()","Exception in Add data Method");
             Skm = 0;
+            SRpm= "0";
+            SRuntime="0";
+            SSpeed="0";
             //****************--Getting Current Date--**********************
             Date c = Calendar.getInstance().getTime();
             System.out.println("Current time => " + c);
@@ -1920,7 +1907,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             SimpleDateFormat dateFormat = new SimpleDateFormat("hh.mm aa");
             String formattedTime = dateFormat.format(new Date()).toString();
 
-            boolean indata = myhelper.insertData(new KmDataModel(Skm,0,formattedDate,formattedTime));
+            boolean indata = myhelper.insertData(new KmDataModel(Skm,0,formattedDate,formattedTime,SRpm,SSpeed,SRuntime));
 
             LastRecord();
             SecondLastRecord();
@@ -1947,8 +1934,9 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             stringBuffer.append(cursor.getString(3)+"   ");
             stringBuffer.append("Km :"+ cursor.getInt(1)+"\n");
             stringBuffer.append("DffKm :"+ cursor.getInt(4)+"\n");
-
-
+            stringBuffer.append("Rpm :"+ cursor.getString(5)+"\n");
+            stringBuffer.append("Speed :"+ cursor.getString(6)+"\n");
+            stringBuffer.append("Runtime :"+ cursor.getString(7)+"\n");
             // Show all data
         }
         QuestionMark("Data",stringBuffer.toString());

@@ -14,24 +14,6 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <ScrollView
-            android:id="@+id/data_scroll"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="top"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:elevation="2dp"
-            android:visibility="gone"
-            android:outlineProvider="bounds">
-
-            <TableLayout
-                android:id="@+id/data_table"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:stretchColumns="*"></TableLayout>
-        </ScrollView>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="187dp"
@@ -47,7 +29,7 @@
                 android:layout_centerVertical="true"
                 app:degree_color="@color/blue"
                 app:degrees_step="5"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="5sp"
                 app:needle="@drawable/ic_needle_1"
                 app:orientation_labels_color="@color/red"
                 app:show_degree_value="false"
@@ -56,11 +38,6 @@
                 app:degree_value_color="@color/colorAccent"
                 app:border_color="@color/red"/>
 
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -80,10 +57,10 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="20dp"
-                    android:textSize="25dp"
+                    android:textSize="@dimen/_25sdp"
                     android:text="none"
                     android:textColor="#2d2d2d"
                     android:layout_gravity="center_horizontal"
@@ -93,7 +70,7 @@
 
                 <ImageView
                     android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_height="55dp"
                     android:layout_margin="5dp"
                     android:layout_gravity="end"
                     android:id="@+id/travelKmquestionmark"
@@ -125,9 +102,9 @@
                 android:id="@+id/rpmmain">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="55dp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_margin="5dp"
-                    android:textSize="25dp"
+                    android:textSize="@dimen/_20sdp"
                     android:textColor="#2d2d2d"
                     android:layout_gravity="right"
                     android:text="RPM  "
@@ -135,18 +112,18 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="55dp"
+                    android:layout_height="@dimen/_55sdp"
                     android:layout_margin="5dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="20dp"
-                    android:textSize="25dp"
+                    android:textSize="@dimen/_30sdp"
                     android:textColor="#2d2d2d"
                     android:text="none"
                     android:id="@+id/rpm" />
 
                 <ImageView
                     android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_height="55dp"
                     android:layout_gravity="end"
                     android:id="@+id/rpmquestionmark"
                     android:src="@drawable/questionmark"
@@ -165,9 +142,9 @@
                 android:id="@+id/speedLinearId">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="55dp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_margin="5dp"
-                    android:textSize="25dp"
+                    android:textSize="@dimen/_20sdp"
                     android:textColor="#2d2d2d"
                     android:layout_gravity="right"
                     android:text="Speed  "
@@ -175,12 +152,12 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="55dp"
+                    android:layout_height="@dimen/_55sdp"
                     android:layout_margin="5dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="20dp"
                     android:textColor="#2d2d2d"
-                    android:textSize="25dp"
+                    android:textSize="@dimen/_30sdp"
                     android:text="none"
                     android:id="@+id/speed"
                     />
@@ -191,7 +168,7 @@
 
                 <ImageView
                     android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_height="55dp"
                     android:layout_gravity="end"
                     android:id="@+id/speedquestionmark"
                     android:src="@drawable/questionmark"
@@ -211,23 +188,22 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/boder"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_margin="5dp"
-                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
                 android:textColor="#2d2d2d"
-                android:textSize="25dp"
-                android:text="Engine Runtime :"
+                android:textSize="@dimen/_20sdp"
+                android:text="Runtime :"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
                 android:layout_marginLeft="20dp"
-                android:textSize="25dp"
+                android:textSize="@dimen/_25sdp"
                 android:textColor="#2d2d2d"
                 android:text="none"
                 android:id="@+id/engineRunTimemain"
@@ -258,69 +234,6 @@
                     android:src="@drawable/questionmark"
                     />
 
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:weightSum="2"
-            android:layout_marginTop="25dp"
-            android:id="@+id/tklid"
-            android:background="@drawable/boder"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_margin="5dp"
-                android:layout_weight="0.5"
-                android:textColor="#2d2d2d"
-                android:textSize="25dp"
-                android:text="Latest Distance :"
-                android:id="@+id/saveKmchk"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="20dp"
-                android:textSize="25dp"
-                android:textColor="#2d2d2d"
-                android:text="none"
-                android:id="@+id/killdiffermain"
-                />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.5" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="end"
-                android:orientation="vertical"
-                >
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:id="@+id/kmdifferquestionmark"
-                    android:src="@drawable/questionmark"
-                    />
 
             </LinearLayout>
 
